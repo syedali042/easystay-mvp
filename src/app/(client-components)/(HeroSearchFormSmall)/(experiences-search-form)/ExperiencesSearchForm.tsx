@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import React, { FC } from "react";
-import LocationInput from "../LocationInput";
-import GuestsInput from "../GuestsInput";
-import ExperiencesDateSingleInput from "./ExperiencesDateSingleInput";
+import React, {FC} from 'react';
+import LocationInput from '../LocationInput';
+import GuestsInput from '../GuestsInput';
+import ExperiencesDateSingleInput from './ExperiencesDateSingleInput';
 
 export interface ExperiencesSearchFormProps {}
 
@@ -18,7 +18,7 @@ const ExperiencesSearchForm: FC<ExperiencesSearchFormProps> = ({}) => {
         <div className="self-center border-r border-slate-200 dark:border-slate-700 h-8"></div>
         <ExperiencesDateSingleInput className="flex-[1.2]" />
         <div className="self-center border-r border-slate-200 dark:border-slate-700 h-8"></div>
-        <GuestsInput className="flex-1" submitLink="/listing-experiences" />
+        <GuestsInput className="flex-1" submitLink="/" />
       </form>
     );
   };

@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import React, { Fragment, useEffect, useState } from "react";
-import { Popover, Transition } from "@headlessui/react";
-import NcInputNumber from "@/components/NcInputNumber";
-import { FC } from "react";
-import ClearDataButton from "./ClearDataButton";
-import ButtonSubmit from "./ButtonSubmit";
-import { PathName } from "@/routers/types";
-import { UserPlusIcon } from "@heroicons/react/24/outline";
-import { GuestsObject } from "../type";
+import React, {Fragment, useEffect, useState} from 'react';
+import {Popover, Transition} from '@headlessui/react';
+import NcInputNumber from '@/components/NcInputNumber';
+import {FC} from 'react';
+import ClearDataButton from './ClearDataButton';
+import ButtonSubmit from './ButtonSubmit';
+import {PathName} from '@/routers/types';
+import {UserPlusIcon} from '@heroicons/react/24/outline';
+import {GuestsObject} from '../type';
 
 export interface GuestsInputProps {
   fieldClassName?: string;
@@ -18,9 +18,9 @@ export interface GuestsInputProps {
 }
 
 const GuestsInput: FC<GuestsInputProps> = ({
-  fieldClassName = "[ nc-hero-field-padding ]",
-  className = "[ nc-flex-1 ]",
-  buttonSubmitHref = "/listing-stay-map",
+  fieldClassName = '[ nc-hero-field-padding ]',
+  className = '[ nc-flex-1 ]',
+  buttonSubmitHref = '/',
   hasButtonSubmit = true,
 }) => {
   const [guestAdultsInputValue, setGuestAdultsInputValue] = useState(2);
@@ -33,15 +33,15 @@ const GuestsInput: FC<GuestsInputProps> = ({
       guestChildren: guestChildrenInputValue,
       guestInfants: guestInfantsInputValue,
     };
-    if (type === "guestAdults") {
+    if (type === 'guestAdults') {
       setGuestAdultsInputValue(value);
       newValue.guestAdults = value;
     }
-    if (type === "guestChildren") {
+    if (type === 'guestChildren') {
       setGuestChildrenInputValue(value);
       newValue.guestChildren = value;
     }
-    if (type === "guestInfants") {
+    if (type === 'guestInfants') {
       setGuestInfantsInputValue(value);
       newValue.guestInfants = value;
     }
@@ -52,11 +52,11 @@ const GuestsInput: FC<GuestsInputProps> = ({
 
   return (
     <Popover className={`flex relative ${className}`}>
-      {({ open }) => (
+      {({open}) => (
         <>
           <div
             className={`flex-1 z-10 flex items-center focus:outline-none ${
-              open ? "nc-hero-field-focused" : ""
+              open ? 'nc-hero-field-focused' : ''
             }`}
           >
             <Popover.Button
@@ -67,10 +67,10 @@ const GuestsInput: FC<GuestsInputProps> = ({
               </div>
               <div className="flex-grow">
                 <span className="block xl:text-lg font-semibold">
-                  {totalGuests || ""} Guests
+                  {totalGuests || ''} Guests
                 </span>
                 <span className="block mt-1 text-sm text-neutral-400 leading-none font-light">
-                  {totalGuests ? "Guests" : "Add guests"}
+                  {totalGuests ? 'Guests' : 'Add guests'}
                 </span>
               </div>
 
@@ -109,7 +109,7 @@ const GuestsInput: FC<GuestsInputProps> = ({
               <NcInputNumber
                 className="w-full"
                 defaultValue={guestAdultsInputValue}
-                onChange={(value) => handleChangeData(value, "guestAdults")}
+                onChange={(value) => handleChangeData(value, 'guestAdults')}
                 max={10}
                 min={1}
                 label="Adults"
@@ -118,7 +118,7 @@ const GuestsInput: FC<GuestsInputProps> = ({
               <NcInputNumber
                 className="w-full mt-6"
                 defaultValue={guestChildrenInputValue}
-                onChange={(value) => handleChangeData(value, "guestChildren")}
+                onChange={(value) => handleChangeData(value, 'guestChildren')}
                 max={4}
                 label="Children"
                 desc="Ages 2–12"
@@ -127,7 +127,7 @@ const GuestsInput: FC<GuestsInputProps> = ({
               <NcInputNumber
                 className="w-full mt-6"
                 defaultValue={guestInfantsInputValue}
-                onChange={(value) => handleChangeData(value, "guestInfants")}
+                onChange={(value) => handleChangeData(value, 'guestInfants')}
                 max={4}
                 label="Infants"
                 desc="Ages 0–2"

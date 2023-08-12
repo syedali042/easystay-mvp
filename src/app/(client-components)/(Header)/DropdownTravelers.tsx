@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { Popover, Transition } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/24/solid";
-import { Fragment } from "react";
-import { PathName } from "@/routers/types";
-import Link from "next/link";
+import {Popover, Transition} from '@headlessui/react';
+import {ChevronDownIcon} from '@heroicons/react/24/solid';
+import {Fragment} from 'react';
+import {PathName} from '@/routers/types';
+import Link from 'next/link';
 
 interface SolutionItem {
   name: string;
@@ -16,28 +16,28 @@ interface SolutionItem {
 
 const solutions: SolutionItem[] = [
   {
-    name: "Stays",
-    description: "Stays rental description ",
-    href: "/listing-stay",
+    name: 'Stays',
+    description: 'Stays rental description ',
+    href: '/',
     active: true,
     icon: IconOne,
   },
   {
-    name: "Real Estate",
-    description: "Real Estate description",
-    href: "/listing-real-estate",
+    name: 'Real Estate',
+    description: 'Real Estate description',
+    href: '/',
     icon: IconTwo,
   },
   {
-    name: "Cars",
-    description: "Car rental description",
-    href: "/listing-car",
+    name: 'Cars',
+    description: 'Car rental description',
+    href: '/',
     icon: IconThree,
   },
   {
-    name: "Experiences",
-    description: "Tour and experiences",
-    href: "/listing-experiences",
+    name: 'Experiences',
+    description: 'Tour and experiences',
+    href: '/',
     icon: IconFour,
   },
 ];
@@ -45,16 +45,16 @@ const solutions: SolutionItem[] = [
 export default function DropdownTravelers() {
   return (
     <Popover className="DropdownTravelers relative flex">
-      {({ open, close }) => (
+      {({open, close}) => (
         <>
           <Popover.Button
-            className={`${open ? "" : "text-opacity-90"}
+            className={`${open ? '' : 'text-opacity-90'}
                 group self-center py-2 h-10 sm:h-12 rounded-md text-sm sm:text-base font-medium hover:text-opacity-100 focus:outline-none`}
           >
             <div className={` inline-flex items-center `} role="button">
               <span>Travelers</span>
               <ChevronDownIcon
-                className={`${open ? "-rotate-180" : "text-opacity-70 "}
+                className={`${open ? '-rotate-180' : 'text-opacity-70 '}
                   ml-2 h-5 w-5 text-neutral-700 group-hover:text-opacity-80 transition ease-in-out duration-150 `}
                 aria-hidden="true"
               />
@@ -78,7 +78,7 @@ export default function DropdownTravelers() {
                       href={item.href}
                       onClick={() => close()}
                       className={`flex items-center p-2 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-neutral-50 dark:hover:bg-neutral-700 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50 ${
-                        item.active ? "bg-neutral-100 dark:bg-neutral-700" : ""
+                        item.active ? 'bg-neutral-100 dark:bg-neutral-700' : ''
                       }`}
                     >
                       <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 bg-primary-50 rounded-md text-primary-500 sm:h-12 sm:w-12">

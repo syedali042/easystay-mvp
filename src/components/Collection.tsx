@@ -1,7 +1,7 @@
-import React, { FC } from "react";
-import ButtonSecondary from "@/shared/ButtonSecondary";
-import Link from "next/link";
-import Image from "next/image";
+import React, {FC} from 'react';
+import ButtonSecondary from '@/shared/ButtonSecondary';
+import Link from 'next/link';
+import Image from 'next/image';
 
 export interface CollectionProps {
   className?: string;
@@ -12,14 +12,14 @@ export interface CollectionProps {
 }
 
 const Collection: FC<CollectionProps> = ({
-  className = "",
-  featuredImage = "https://images.pexels.com/photos/5059013/pexels-photo-5059013.jpeg?auto=compress&cs=tinysrgb&w=1600",
-  name = "Collection",
-  desc = "The most popular <br /> in the world",
+  className = '',
+  featuredImage = 'https://images.pexels.com/photos/5059013/pexels-photo-5059013.jpeg?auto=compress&cs=tinysrgb&w=1600',
+  name = 'Collection',
+  desc = 'The most popular <br /> in the world',
   color,
 }) => {
   return (
-    <Link href={"/listing-stay"} className={`nc-Collection block ${className}`}>
+    <Link href={'/'} className={`nc-Collection block ${className}`}>
       <div
         className={`relative w-full aspect-w-16 aspect-h-11 sm:aspect-h-10 h-0 rounded-2xl overflow-hidden group ${color}`}
       >
@@ -43,7 +43,7 @@ const Collection: FC<CollectionProps> = ({
               {desc && (
                 <h2
                   className={`text-xl md:text-2xl text-slate-900 font-semibold`}
-                  dangerouslySetInnerHTML={{ __html: desc }}
+                  dangerouslySetInnerHTML={{__html: desc}}
                 ></h2>
               )}
             </div>
