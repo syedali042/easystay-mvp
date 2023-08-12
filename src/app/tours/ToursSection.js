@@ -6,12 +6,16 @@ import TourFilters from './TourFilters';
 import Heading2 from '@/shared/Heading2';
 import ExperiencesCard from '@/components/ExperiencesCard';
 import {useSelector} from 'react-redux';
-import {getToursList} from '@/redux/slices/tours';
+import {
+  getEndingDate,
+  getStartingDate,
+  getToursList,
+} from '@/redux/slices/tours';
 import ToursCard from '@/components/ToursCard';
 
-const DEMO_DATA = DEMO_EXPERIENCES_LISTINGS.filter((_, i) => i < 8);
-
-const ToursSection = ({className = '', data = DEMO_DATA}) => {
+const ToursSection = ({className = ''}) => {
+  const toursStartingFrom = useSelector(getStartingDate);
+  const toursEndingAt = useSelector(getEndingDate);
   const tours = useSelector(getToursList({}));
   return (
     <div className={`nc-SectionGridFilterCard mt-8 ${className}`}>
@@ -20,11 +24,20 @@ const ToursSection = ({className = '', data = DEMO_DATA}) => {
         subHeading={
           <span className="block text-neutral-500 dark:text-neutral-400 mt-3">
             {tours?.length <= 1
-              ? `${tours.length} Tour`
-              : `${tours.length} Tours`}
+              ? `${tours?.length} Tour`
+              : `${tours?.length} Tours`}
             <span className="mx-2">·</span>
-            Aug 12 - 18
-            <span className="mx-2">·</span>2 Guests
+            {new Date(toursStartingFrom).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}{' '}
+            -{' '}
+            {new Date(toursEndingAt).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}
           </span>
         }
       />
