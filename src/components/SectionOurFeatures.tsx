@@ -41,7 +41,7 @@ const SectionOurFeatures: FC<SectionOurFeaturesProps> = ({
               Unforgettable Experiences
             </span>
             <span className="block mt-5 text-neutral-500 dark:text-neutral-400">
-              Easystay ensures that every traveler's journey is filled with
+              Easystay ensures that every traveler&apos;s journey is filled with
               unforgettable experiences. From hidden gems to iconic landmarks,
               they curate exceptional itineraries that leave a lasting
               impression

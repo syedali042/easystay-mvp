@@ -19,7 +19,7 @@ const SectionHero: FC<SectionHeroProps> = ({className = ''}) => {
             Discover, Engage, & Inspire!
           </h2>
           <span className="text-base md:text-lg text-neutral-500 dark:text-neutral-400">
-            Experience Pakistan's Enchanting Beauty: Where Adventure Meets
+            Experience Pakistan&apos;s Enchanting Beauty: Where Adventure Meets
             Serenity. Discover the Unexplored Gems of the East
           </span>
           <ButtonPrimary href="/" sizeClass="px-5 py-4 sm:px-7">
