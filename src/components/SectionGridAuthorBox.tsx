@@ -1,5 +1,4 @@
 import CardAuthorBox from '@/components/CardAuthorBox';
-import CardAuthorBox2 from '@/components/CardAuthorBox2';
 import Heading from '@/shared/Heading';
 import {DEMO_AUTHORS} from '@/data/authors';
 import {AuthorType} from '@/data/types';
@@ -31,17 +30,13 @@ const SectionGridAuthorBox: FC<SectionGridAuthorBoxProps> = ({
         Meet our team
       </Heading>
       <div className={`grid gap-6 md:gap-8 ${gridClassName}`}>
-        {authors.map((author, index) =>
-          boxCard === 'box2' ? (
-            <CardAuthorBox2 key={author.id} author={author} />
-          ) : (
-            <CardAuthorBox
-              index={index < 3 ? index + 1 : undefined}
-              key={author.id}
-              author={author}
-            />
-          )
-        )}
+        {authors.map((author, index) => (
+          <CardAuthorBox
+            index={index < 3 ? index + 1 : undefined}
+            key={author.id}
+            author={author}
+          />
+        ))}
       </div>
     </div>
   );
