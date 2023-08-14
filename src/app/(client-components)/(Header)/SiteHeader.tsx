@@ -1,14 +1,7 @@
 'use client';
 
-import React, {Fragment, useEffect, useRef, useState} from 'react';
-import {
-  ShoppingBagIcon as ShoppingCartIcon,
-  Cog8ToothIcon as CogIcon,
-} from '@heroicons/react/24/outline';
-import {Popover, Transition} from '@headlessui/react';
+import React, {useEffect, useRef, useState} from 'react';
 import {PathName} from '@/routers/types';
-import Link from 'next/link';
-import Header from './Header';
 import Header3 from './Header3';
 import {usePathname} from 'next/navigation';
 
