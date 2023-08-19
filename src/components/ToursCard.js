@@ -6,6 +6,7 @@ import SaleOffBadge from '@/components/SaleOffBadge';
 import Badge from '@/shared/Badge';
 import Link from 'next/link';
 import {MapPinIcon} from '@heroicons/react/24/outline';
+import {useRouter} from 'next/navigation';
 
 const ToursCard = ({
   size = 'default',
@@ -19,6 +20,8 @@ const ToursCard = ({
     arrival: {from: destination},
     id,
   } = data;
+
+  const router = useRouter();
 
   const renderSliderGallery = () => {
     return (
@@ -36,7 +39,11 @@ const ToursCard = ({
 
   const renderContent = () => {
     return (
-      <div className={size === 'default' ? 'py-4 space-y-3' : 'p-3 space-y-1'}>
+      <div
+        style={{cursor: 'pointer'}}
+        onClick={() => router.push(`/tours/${id}`)}
+        className={size === 'default' ? 'py-4 space-y-3' : 'p-3 space-y-1'}
+      >
         <div className="space-y-2">
           <div className="flex items-center text-neutral-500 dark:text-neutral-400 text-sm space-x-2">
             {size === 'default' && <MapPinIcon className="w-4 h-4" />}
@@ -83,7 +90,7 @@ const ToursCard = ({
   return (
     <div className={`nc-ExperiencesCard group relative`}>
       {renderSliderGallery()}
-      <Link href={'/'}>{renderContent()}</Link>
+      {renderContent()}
     </div>
   );
 };
