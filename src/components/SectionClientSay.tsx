@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import Heading from "@/shared/Heading";
-import React, { FC, useState } from "react";
-import clientSayMain from "@/images/clientSayMain.png";
-import clientSay1 from "@/images/clientSay1.png";
-import clientSay2 from "@/images/clientSay2.png";
-import clientSay3 from "@/images/clientSay3.png";
-import clientSay4 from "@/images/clientSay4.png";
-import clientSay5 from "@/images/clientSay5.png";
-import clientSay6 from "@/images/clientSay6.png";
-import quotationImg from "@/images/quotation.png";
-import quotationImg2 from "@/images/quotation2.png";
-import { MapPinIcon } from "@heroicons/react/24/outline";
-import { AnimatePresence, motion, MotionConfig } from "framer-motion";
-import Image from "next/image";
-import { useSwipeable } from "react-swipeable";
-import { variants } from "@/utils/animationVariants";
+import Heading from '@/shared/Heading';
+import React, {FC, useState} from 'react';
+import clientSayMain from '@/images/clientSayMain.png';
+import clientSay1 from '@/images/clientSay1.png';
+import clientSay2 from '@/images/clientSay2.png';
+import clientSay3 from '@/images/clientSay3.png';
+import clientSay4 from '@/images/clientSay4.png';
+import clientSay5 from '@/images/clientSay5.png';
+import clientSay6 from '@/images/clientSay6.png';
+import quotationImg from '@/images/quotation.png';
+import quotationImg2 from '@/images/quotation2.png';
+import {MapPinIcon} from '@heroicons/react/24/outline';
+import {AnimatePresence, motion, MotionConfig} from 'framer-motion';
+import Image from 'next/image';
+import {useSwipeable} from 'react-swipeable';
+import {variants} from '@/utils/animationVariants';
 
 export interface SectionClientSayProps {
   className?: string;
@@ -25,29 +25,29 @@ export interface SectionClientSayProps {
 const DEMO_DATA = [
   {
     id: 1,
-    clientName: "Tiana Abie",
-    clientAddress: "Malaysia",
+    clientName: 'Tiana Abie',
+    clientAddress: 'Malaysia',
     content:
-      "This place is exactly like the picture posted on Chisfis. Great service, we had a great stay!",
+      'This place is exactly like the picture posted on Chisfis. Great service, we had a great stay!',
   },
   {
     id: 2,
-    clientName: "Lennie Swiffan",
-    clientAddress: "London",
+    clientName: 'Lennie Swiffan',
+    clientAddress: 'London',
     content:
-      "This place is exactly like the picture posted on Chisfis. Great service, we had a great stay!",
+      'This place is exactly like the picture posted on Chisfis. Great service, we had a great stay!',
   },
   {
     id: 3,
-    clientName: "Berta Emili",
-    clientAddress: "Tokyo",
+    clientName: 'Berta Emili',
+    clientAddress: 'Tokyo',
     content:
-      "This place is exactly like the picture posted on Chisfis. Great service, we had a great stay!",
+      'This place is exactly like the picture posted on Chisfis. Great service, we had a great stay!',
   },
 ];
 
 const SectionClientSay: FC<SectionClientSayProps> = ({
-  className = "",
+  className = '',
   data = DEMO_DATA,
 }) => {
   const [index, setIndex] = useState(0);
@@ -117,8 +117,8 @@ const SectionClientSay: FC<SectionClientSayProps> = ({
 
   return (
     <div className={`nc-SectionClientSay relative ${className} `}>
-      <Heading desc="Let's see what people think of Chisfis" isCenter>
-        Good news from far away
+      <Heading desc="Let's see what people think of EasyStay" isCenter>
+        What our clients think about us!
       </Heading>
       <div className="relative md:mb-16 max-w-2xl mx-auto">
         {renderBg()}
@@ -137,8 +137,8 @@ const SectionClientSay: FC<SectionClientSayProps> = ({
 
           <MotionConfig
             transition={{
-              x: { type: "spring", stiffness: 300, damping: 30 },
-              opacity: { duration: 0.2 },
+              x: {type: 'spring', stiffness: 300, damping: 30},
+              opacity: {duration: 0.2},
             }}
           >
             <div
@@ -174,7 +174,7 @@ const SectionClientSay: FC<SectionClientSayProps> = ({
                 {data.map((item, i) => (
                   <button
                     className={`w-2 h-2 rounded-full ${
-                      i === index ? "bg-black/70" : "bg-black/10 "
+                      i === index ? 'bg-black/70' : 'bg-black/10 '
                     }`}
                     onClick={() => changeItemId(i)}
                     key={i}
