@@ -99,7 +99,7 @@ const Header3 = ({className = ''}) => {
           <span className="h-5 w-[1px] bg-neutral-300 dark:bg-neutral-700"></span>
 
           <span
-            onClick={() => setShowHeroSearch('/about')}
+            onClick={() => router.push('/about')}
             className="block px-4 cursor-pointer py-3 "
           >
             About
@@ -107,7 +107,7 @@ const Header3 = ({className = ''}) => {
           <span className="h-5 w-[1px] bg-neutral-300 dark:bg-neutral-700"></span>
 
           <span
-            onClick={() => setShowHeroSearch('/contact')}
+            onClick={() => router.push('/contact')}
             className="block px-4 cursor-pointer py-3 "
           >
             Contact Us
