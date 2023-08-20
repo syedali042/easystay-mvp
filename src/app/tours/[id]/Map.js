@@ -23,7 +23,7 @@ const TourMap = ({tourId}) => {
             loading="lazy"
             allowFullScreen
             referrerPolicy="no-referrer-when-downgrade"
-            src={tour?.map?.url}
+            src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAGVJfZMAKYfZ71nzL_v5i3LjTTWnCYwTY&q=${tour?.arrival?.from}`}
           ></iframe>
         </div>
       </div>
