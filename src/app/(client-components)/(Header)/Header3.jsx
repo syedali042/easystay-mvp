@@ -76,7 +76,7 @@ const Header3 = ({className = ''}) => {
       >
         <div className="flex items-center font-medium text-sm">
           <span
-            onClick={() => setShowHeroSearch('location')}
+            onClick={() => router.push('/')}
             className="block pl-5 pr-4 cursor-pointer py-3"
           >
             Home
@@ -99,15 +99,7 @@ const Header3 = ({className = ''}) => {
           <span className="h-5 w-[1px] bg-neutral-300 dark:bg-neutral-700"></span>
 
           <span
-            onClick={() => setShowHeroSearch('dates')}
-            className="block px-4 cursor-pointer py-3 "
-          >
-            Blogs
-          </span>
-          <span className="h-5 w-[1px] bg-neutral-300 dark:bg-neutral-700"></span>
-
-          <span
-            onClick={() => setShowHeroSearch('dates')}
+            onClick={() => setShowHeroSearch('/about')}
             className="block px-4 cursor-pointer py-3 "
           >
             About
@@ -115,7 +107,7 @@ const Header3 = ({className = ''}) => {
           <span className="h-5 w-[1px] bg-neutral-300 dark:bg-neutral-700"></span>
 
           <span
-            onClick={() => setShowHeroSearch('dates')}
+            onClick={() => setShowHeroSearch('/contact')}
             className="block px-4 cursor-pointer py-3 "
           >
             Contact Us
@@ -161,11 +153,6 @@ const Header3 = ({className = ''}) => {
                 <div className="flex-1 flex justify-between">
                   <div>
                     <Logo />
-                  </div>
-                  <div>
-                    <ButtonSecondary>
-                      <i className="las la-bars text-2xl"></i>
-                    </ButtonSecondary>
                   </div>
                 </div>
               </div>

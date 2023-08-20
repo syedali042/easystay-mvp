@@ -1,10 +1,6 @@
 'use client';
 
-import {
-  HeartIcon,
-  MagnifyingGlassIcon,
-  UserCircleIcon,
-} from '@heroicons/react/24/outline';
+import {HomeIcon, MapIcon, RocketLaunchIcon} from '@heroicons/react/24/outline';
 import React, {useEffect, useRef} from 'react';
 import {PathName} from '@/routers/types';
 import MenuBar from '@/shared/MenuBar';
@@ -25,19 +21,19 @@ interface NavItem {
 
 const NAV: NavItem[] = [
   {
-    name: 'Explore',
+    name: 'Home',
     link: '/',
-    icon: MagnifyingGlassIcon,
+    icon: HomeIcon,
   },
   {
-    name: 'Wishlists',
-    link: '/',
-    icon: HeartIcon,
+    name: 'Destinations',
+    link: '/destinations',
+    icon: MapIcon,
   },
   {
-    name: 'Log in',
-    link: '/',
-    icon: UserCircleIcon,
+    name: 'Tours',
+    link: '/tours',
+    icon: RocketLaunchIcon,
   },
   {
     name: 'Menu',
@@ -64,10 +60,6 @@ const FooterNav = () => {
   };
 
   const showHideHeaderMenu = () => {
-    // if (typeof window === "undefined" || window?.innerWidth >= 768) {
-    //   return null;
-    // }
-
     let currentScrollPos = window.pageYOffset;
     if (!containerRef.current) return;
 

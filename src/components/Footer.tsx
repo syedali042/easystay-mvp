@@ -73,17 +73,17 @@ const Footer: React.FC = () => {
     <>
       <FooterNav />
 
-      <div className="nc-Footer relative py-12 lg:py-16 border-t border-neutral-200 dark:border-neutral-700">
-        <div className="container grid grid-cols-2 gap-y-10 gap-x-5 sm:gap-x-8 md:grid-cols-4 lg:grid-cols-4 lg:gap-x-10 ">
-          <div className="grid grid-cols-4 gap-5 col-span-2 md:col-span-4 lg:md:col-span-1 lg:flex lg:flex-col">
-            <div className="col-span-2 md:col-span-1">
+      <div className="nc-Footer relative py-8  border-t border-neutral-200 dark:border-neutral-700">
+        <div className="container ">
+          <div className="flex justify-between items-center">
+            <div className="">
               <Logo />
             </div>
-            <div className="col-span-2 flex items-center md:col-span-3">
-              <SocialsList1 className="flex items-center space-x-3 lg:space-x-0 lg:flex-col lg:space-y-2.5 lg:items-start" />
+            <div className="">
+              <SocialsList1 className="flex items-center space-x-4" />
             </div>
           </div>
-          {widgetMenus.map(renderWidgetMenuItem)}
+          {/* {widgetMenus.map(renderWidgetMenuItem)} */}
         </div>
       </div>
     </>
