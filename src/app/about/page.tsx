@@ -21,7 +21,8 @@ const PageAbout: FC<PageAboutProps> = ({}) => {
           rightImg={rightImg}
           heading="👋 About Us."
           btnText=""
-          subHeading="We’re impartial and independent, and every day we create distinctive, world-class programmes and content which inform, educate and entertain millions of people in the around the world."
+          subHeading="
+Discover the essence of Pakistan with us - the leading tourism company in the nation. Embark on a journey where vibrant cultures, breathtaking landscapes, and thrilling adventures await. Our expertly crafted itineraries cater to all your desires, from ancient wonders to adrenaline-fueled escapades. With seamless planning and authentic experiences, we're your gateway to Pakistan's hidden gems. Come, explore, and let us redefine your travel story."
         />
 
         <SectionFounder />
@@ -29,8 +30,6 @@ const PageAbout: FC<PageAboutProps> = ({}) => {
           <BackgroundSection />
           <SectionClientSay />
         </div>
-
-        <SectionStatistic />
 
         <SectionSubscribe2 />
       </div>

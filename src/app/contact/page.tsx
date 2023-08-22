@@ -1,25 +1,25 @@
-import React, { FC } from "react";
-import SectionSubscribe2 from "@/components/SectionSubscribe2";
-import SocialsList from "@/shared/SocialsList";
-import Label from "@/components/Label";
-import Input from "@/shared/Input";
-import Textarea from "@/shared/Textarea";
-import ButtonPrimary from "@/shared/ButtonPrimary";
+import React, {FC} from 'react';
+import SectionSubscribe2 from '@/components/SectionSubscribe2';
+import Label from '@/components/Label';
+import Input from '@/shared/Input';
+import Textarea from '@/shared/Textarea';
+import ButtonPrimary from '@/shared/ButtonPrimary';
+import SocialsList1 from '@/shared/SocialsList1';
 
 export interface PageContactProps {}
 
 const info = [
   {
-    title: "🗺 ADDRESS",
-    desc: "Photo booth tattooed prism, portland taiyaki hoodie neutra typewriter",
+    title: '🗺 ADDRESS',
+    desc: '23-KM Main Ferozpur Road, Eden Gardens, Lahore',
   },
   {
-    title: "💌 EMAIL",
-    desc: "nc.example@example.com",
+    title: '💌 EMAIL',
+    desc: 'info@easystay.com.pk',
   },
   {
-    title: "☎ PHONE",
-    desc: "000-123-456-7890",
+    title: '☎ PHONE',
+    desc: '92 345 4450507',
   },
 ];
 
@@ -47,7 +47,7 @@ const PageContact: FC<PageContactProps> = ({}) => {
                 <h3 className="uppercase font-semibold text-sm dark:text-neutral-200 tracking-wider">
                   🌏 SOCIALS
                 </h3>
-                <SocialsList className="mt-2" />
+                <SocialsList1 className="mt-2" />
               </div>
             </div>
             <div>
