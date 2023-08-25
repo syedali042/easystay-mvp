@@ -3,6 +3,7 @@ import {persistReducer} from 'redux-persist';
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
 // slices
 import toursReducer from './slices/tours';
+import destinationsReducer from './slices/destinations';
 import {clearStore} from './util';
 
 // ----------------------------------------------------------------------
@@ -38,9 +39,18 @@ const toursPersistConfig = {
   // whitelist: [],
 };
 
+const destinationsPersistConfig = {
+  key: 'destinations',
+  storage,
+  keyPrefix: 'redux-',
+  // whitelist: [],
+};
+
 const appReducer = combineReducers({
   tours: toursReducer,
-  tours: persistReducer(toursPersistConfig, toursReducer),
+  destinations: destinationsReducer,
+  // tours: persistReducer(toursPersistConfig, toursReducer),
+  // destinations: persistReducer(destinationsPersistConfig, destinationsReducer),
 });
 
 const rootReducer = (state, action) => {
@@ -48,6 +58,7 @@ const rootReducer = (state, action) => {
   if (action.type === clearStore.type) {
     storage.removeItem('persist:root');
     storage.removeItem('persist:tours');
+    storage.removeItem('persist:destinations');
 
     return appReducer(undefined, action);
   }
