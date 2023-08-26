@@ -10,6 +10,7 @@ import {
   setNewDestinationFieldValue,
   newDestinationFormValues,
 } from '@/redux/slices/destinations';
+import {DESTINATIONS_TYPES_ARRAY} from '@/constants/common';
 const BasicInfo = ({}) => {
   const dispatch = useDispatch();
   const values = useSelector(newDestinationFormValues);
@@ -30,8 +31,16 @@ const BasicInfo = ({}) => {
             <option value="" disabled selected>
               ...
             </option>
-            <option value="city">City</option>
-            <option value="place">Place</option>
+            {DESTINATIONS_TYPES_ARRAY.map((destination) => {
+              const key = destination[0];
+              const label = destination[1];
+              const value = destination[2];
+              return (
+                <option key={key} value={value}>
+                  {label}
+                </option>
+              );
+            })}
           </Select>
         </FormItem>
         <FormItem label="Destination Title">
