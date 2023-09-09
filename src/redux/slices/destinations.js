@@ -11,7 +11,12 @@ const initialState = {
   error: null,
   isLoading: null,
   list: [],
-  new: {},
+  new: {
+    type: '',
+    title: '',
+    description: '',
+    photos: [],
+  },
 };
 
 const slice = createSlice({
@@ -105,4 +110,20 @@ export const createNewDestination = () => async (dispatch, getState) => {
     dispatch(actions.stopLoading());
     dispatch(actions.setError(error));
   }
+};
+
+// Filter Destinations
+export const filterDestinationsList = ({filterByTypes, list}) => {
+  let destinations = list;
+
+  if (filterByTypes)
+    if (filterByTypes.length > 0)
+      if (filterByTypes.includes('all')) destinations = destinations;
+      else {
+        destinations = destinations?.filter(({type}) =>
+          filterByTypes.includes(type)
+        );
+      }
+
+  return destinations;
 };

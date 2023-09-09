@@ -20,7 +20,7 @@ const Images = () => {
           style={{borderRadius: '10px'}}
         />
         <i
-          onClick={() => setPhotos(photos.filter((photo) => photo !== src))}
+          onClick={() => setPhotos(photos?.filter((photo) => photo !== src))}
           className="text-2xl text-neutral-400 las la-times-circle hover:text-neutral-900 dark:hover:text-neutral-100 cursor-pointer"
         ></i>
       </div>
@@ -37,8 +37,8 @@ const Images = () => {
     e.preventDefault();
     try {
       let {value} = document.getElementById('photos');
-      const completeLink = `https://drive.google.com/uc?export=view&id=${value}`;
-      await setPhotos((pre) => [...pre, completeLink]);
+      const newPhotoUrl = `https://drive.google.com/uc?export=view&id=${value}`;
+      await setPhotos((pre) => [...pre, newPhotoUrl]);
       form.reset();
     } catch (error) {
       console.log(error);
@@ -73,7 +73,7 @@ const Images = () => {
         <div className=" border-b border-neutral-200 dark:border-neutral-700"></div>
         <div className="flow-root">
           <div className="-my-3 divide-y divide-neutral-100 dark:divide-neutral-800">
-            {photos.map((rule) => {
+            {photos?.map((rule) => {
               return renderExcluding(rule);
             })}
           </div>

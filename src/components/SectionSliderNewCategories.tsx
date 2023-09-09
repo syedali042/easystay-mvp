@@ -22,7 +22,7 @@ export interface SectionSliderNewCategoriesProps {
   sliderStyle?: 'style1' | 'style2';
 }
 
-const DEMO_CATS: TaxonomyType[] = [
+const DEMO_CATS = [
   {
     id: '1',
     href: '/',
@@ -152,7 +152,7 @@ const SectionSliderNewCategories: FC<SectionSliderNewCategoriesProps> = ({
     trackMouse: true,
   });
 
-  const renderCard = (item: TaxonomyType) => {
+  const renderCard = (item: any) => {
     return <CardCategory3 taxonomy={item} />;
   };
 

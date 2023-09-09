@@ -1,5 +1,5 @@
-import { Route } from "@/routers/types";
-import { StaticImageData } from "next/image";
+import {Route} from '@/routers/types';
+import {StaticImageData} from 'next/image';
 
 //  ######  CustomLink  ######## //
 export interface CustomLink {
@@ -11,14 +11,10 @@ export interface CustomLink {
 //  ##########  PostDataType ######## //
 export interface TaxonomyType {
   id: string | number;
-  name: string;
+  title: string;
   href: Route<string>;
-  count?: number;
-  thumbnail?: string;
+  photos?: [string];
   desc?: string;
-  color?: TwMainColor | string;
-  taxonomy: "category" | "tag";
-  listingType?: "stay" | "experiences" | "car";
 }
 
 export interface AuthorType {
@@ -48,18 +44,18 @@ export interface PostDataType {
   commentCount: number;
   viewdCount: number;
   readingTime: number;
-  postType?: "standard" | "video" | "gallery" | "audio";
+  postType?: 'standard' | 'video' | 'gallery' | 'audio';
 }
 
 export type TwMainColor =
-  | "pink"
-  | "green"
-  | "yellow"
-  | "red"
-  | "indigo"
-  | "blue"
-  | "purple"
-  | "gray";
+  | 'pink'
+  | 'green'
+  | 'yellow'
+  | 'red'
+  | 'indigo'
+  | 'blue'
+  | 'purple'
+  | 'gray';
 
 //
 export interface StayDataType {
