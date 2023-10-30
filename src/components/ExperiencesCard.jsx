@@ -38,7 +38,7 @@ const ExperiencesCard = ({
           uniqueID={`ExperiencesCard_${id}`}
           ratioClass={ratioClass}
           galleryImgs={galleryImgs}
-          href={href}
+          href={'/'}
         />
         <BtnLikeIcon isLiked={like} className="absolute right-3 top-3" />
         {saleOff && <SaleOffBadge className="absolute left-3 top-3" />}
@@ -86,7 +86,7 @@ const ExperiencesCard = ({
   return (
     <div className={`nc-ExperiencesCard group relative ${className}`}>
       {renderSliderGallery()}
-      <Link href={href}>{renderContent()}</Link>
+      <Link href={'/'}>{renderContent()}</Link>
     </div>
   );
 };

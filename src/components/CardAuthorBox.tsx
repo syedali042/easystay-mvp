@@ -1,9 +1,9 @@
-import React, { FC } from "react";
-import { AuthorType } from "@/data/types";
-import { StarIcon } from "@heroicons/react/24/solid";
-import Avatar from "@/shared/Avatar";
-import Badge from "@/shared/Badge";
-import Link from "next/link";
+import React, {FC} from 'react';
+import {AuthorType} from '@/data/types';
+import {StarIcon} from '@heroicons/react/24/solid';
+import Avatar from '@/shared/Avatar';
+import Badge from '@/shared/Badge';
+import Link from 'next/link';
 
 export interface CardAuthorBoxProps {
   className?: string;
@@ -12,20 +12,20 @@ export interface CardAuthorBoxProps {
 }
 
 const CardAuthorBox: FC<CardAuthorBoxProps> = ({
-  className = "",
+  className = '',
   author,
   index,
 }) => {
-  const { displayName, href = "/", avatar, starRating } = author;
+  const {displayName, href = '/', avatar, starRating} = author;
   return (
     <Link
-      href={href}
+      href={'/'}
       className={`nc-CardAuthorBox relative flex flex-col items-center justify-center text-center px-3 py-5 sm:px-6 sm:py-7  [ nc-box-has-hover ] [ nc-dark-box-bg-has-hover ] ${className}`}
     >
       {index && (
         <Badge
           className="absolute left-3 top-3"
-          color={index === 1 ? "red" : index === 2 ? "blue" : "green"}
+          color={index === 1 ? 'red' : index === 2 ? 'blue' : 'green'}
           name={`#${index}`}
         />
       )}

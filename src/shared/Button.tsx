@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { Route } from "@/routers/types";
-import Link from "next/link";
-import React, { ButtonHTMLAttributes, FC } from "react";
+import {Route} from '@/routers/types';
+import Link from 'next/link';
+import React, {ButtonHTMLAttributes, FC} from 'react';
 
 export interface ButtonProps {
   className?: string;
@@ -12,7 +12,7 @@ export interface ButtonProps {
   //
   loading?: boolean;
   disabled?: boolean;
-  type?: ButtonHTMLAttributes<HTMLButtonElement>["type"];
+  type?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
   href?: Route<string>;
   targetBlank?: boolean;
   onClick?: () => void;
@@ -20,10 +20,10 @@ export interface ButtonProps {
 }
 
 const Button: FC<ButtonProps> = ({
-  className = "text-neutral-700 dark:text-neutral-200",
-  translate = "",
-  sizeClass = "px-4 py-3 sm:px-6",
-  fontSize = "text-sm sm:text-base font-medium",
+  className = 'text-neutral-700 dark:text-neutral-200',
+  translate = '',
+  sizeClass = 'px-4 py-3 sm:px-6',
+  fontSize = 'text-sm sm:text-base font-medium',
   disabled = false,
   href,
   children,
@@ -62,11 +62,11 @@ const Button: FC<ButtonProps> = ({
   if (!!href) {
     return (
       <Link
-        href={href}
-        target={targetBlank ? "_blank" : undefined}
+        href={'/'}
+        target={targetBlank ? '_blank' : undefined}
         className={`${CLASSES} `}
         onClick={onClick}
-        rel={targetBlank ? "noopener noreferrer" : undefined}
+        rel={targetBlank ? 'noopener noreferrer' : undefined}
       >
         {children || `This is Link`}
       </Link>

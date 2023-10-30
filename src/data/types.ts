@@ -10,11 +10,13 @@ export interface CustomLink {
 
 //  ##########  PostDataType ######## //
 export interface TaxonomyType {
-  id: string | number;
-  title: string;
-  href: Route<string>;
+  id?: string | number;
+  name?: string;
+  title?: string;
+  href?: Route<string>;
   photos?: [string];
   desc?: string;
+  count?: string | number;
 }
 
 export interface AuthorType {

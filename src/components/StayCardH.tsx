@@ -1,12 +1,12 @@
-import React, { FC } from "react";
-import GallerySlider from "@/components/GallerySlider";
-import { DEMO_STAY_LISTINGS } from "@/data/listings";
-import { StayDataType } from "@/data/types";
-import StartRating from "@/components/StartRating";
-import BtnLikeIcon from "@/components/BtnLikeIcon";
-import SaleOffBadge from "@/components/SaleOffBadge";
-import Badge from "@/shared/Badge";
-import Link from "next/link";
+import React, {FC} from 'react';
+import GallerySlider from '@/components/GallerySlider';
+import {DEMO_STAY_LISTINGS} from '@/data/listings';
+import {StayDataType} from '@/data/types';
+import StartRating from '@/components/StartRating';
+import BtnLikeIcon from '@/components/BtnLikeIcon';
+import SaleOffBadge from '@/components/SaleOffBadge';
+import Badge from '@/shared/Badge';
+import Link from 'next/link';
 
 export interface StayCardHProps {
   className?: string;
@@ -15,10 +15,7 @@ export interface StayCardHProps {
 
 const DEMO_DATA = DEMO_STAY_LISTINGS[0];
 
-const StayCardH: FC<StayCardHProps> = ({
-  className = "",
-  data = DEMO_DATA,
-}) => {
+const StayCardH: FC<StayCardHProps> = ({className = '', data = DEMO_DATA}) => {
   const {
     galleryImgs,
     listingCategory,
@@ -41,7 +38,7 @@ const StayCardH: FC<StayCardHProps> = ({
           ratioClass="aspect-w-6 aspect-h-5"
           galleryImgs={galleryImgs}
           uniqueID={`StayCardH_${id}`}
-          href={href}
+          href={'/'}
         />
         <BtnLikeIcon isLiked={like} className="absolute right-3 top-3" />
         {saleOff && <SaleOffBadge className="absolute left-3 top-3" />}
@@ -135,7 +132,7 @@ const StayCardH: FC<StayCardHProps> = ({
     <div
       className={`nc-StayCardH group relative bg-white dark:bg-neutral-900 border border-neutral-100 dark:border-neutral-800 rounded-2xl overflow-hidden hover:shadow-xl transition-shadow ${className}`}
     >
-      <Link href={href} className="absolute inset-0"></Link>
+      <Link href={'/'} className="absolute inset-0"></Link>
       <div className="grid grid-cols-1 md:flex md:flex-row ">
         {renderSliderGallery()}
         {renderContent()}

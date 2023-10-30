@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { PathName } from "@/routers/types";
-import { Popover, Transition } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/24/solid";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import React, { FC, Fragment, useEffect, useState } from "react";
+import {PathName} from '@/routers/types';
+import {Popover, Transition} from '@headlessui/react';
+import {ChevronDownIcon} from '@heroicons/react/24/solid';
+import Image from 'next/image';
+import Link from 'next/link';
+import {usePathname} from 'next/navigation';
+import React, {FC, Fragment, useEffect, useState} from 'react';
 
 // <--- NavItemType --->
 export interface MegamenuItem {
@@ -23,7 +23,7 @@ export interface NavItemType {
   targetBlank?: boolean;
   children?: NavItemType[];
   megaMenu?: MegamenuItem[];
-  type?: "dropdown" | "megaMenu" | "none";
+  type?: 'dropdown' | 'megaMenu' | 'none';
 }
 
 export interface NavigationItemProps {
@@ -32,7 +32,7 @@ export interface NavigationItemProps {
 
 type NavigationItemWithRouterProps = NavigationItemProps;
 
-const NavigationItem: FC<NavigationItemWithRouterProps> = ({ menuItem }) => {
+const NavigationItem: FC<NavigationItemWithRouterProps> = ({menuItem}) => {
   const [menuCurrentHovers, setMenuCurrentHovers] = useState<string[]>([]);
 
   // CLOSE ALL MENU OPENING WHEN CHANGE HISTORY
@@ -59,9 +59,9 @@ const NavigationItem: FC<NavigationItemWithRouterProps> = ({ menuItem }) => {
 
     const isFull = menu.megaMenu && menu.megaMenu?.length > 3;
     const classPopover = isFull
-      ? "menu-megamenu--large"
-      : "menu-megamenu--small relative";
-    const classPanel = isFull ? "left-0" : "-translate-x-1/2 left-1/2";
+      ? 'menu-megamenu--large'
+      : 'menu-megamenu--small relative';
+    const classPanel = isFull ? 'left-0' : '-translate-x-1/2 left-1/2';
 
     return (
       <Popover
@@ -122,7 +122,7 @@ const NavigationItem: FC<NavigationItemWithRouterProps> = ({ menuItem }) => {
         <Link
           rel="noopener noreferrer"
           className="inline-flex items-center py-1 px-2 rounded hover:text-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800 dark:hover:text-neutral-200 font-normal text-neutral-6000 dark:text-neutral-300"
-          href={item.href || ""}
+          href={'/'}
         >
           {item.name}
         </Link>
@@ -137,7 +137,7 @@ const NavigationItem: FC<NavigationItemWithRouterProps> = ({ menuItem }) => {
       <Popover
         as="li"
         className={`menu-item flex items-center menu-dropdown relative ${
-          menuDropdown.isNew ? "menuIsNew_lv1" : ""
+          menuDropdown.isNew ? 'menuIsNew_lv1' : ''
         }`}
         onMouseEnter={() => onMouseEnterMenu(menuDropdown.id)}
         onMouseLeave={() => onMouseLeaveMenu(menuDropdown.id)}
@@ -167,7 +167,7 @@ const NavigationItem: FC<NavigationItemWithRouterProps> = ({ menuItem }) => {
                       return (
                         <li
                           key={i.id}
-                          className={`px-2 ${i.isNew ? "menuIsNew" : ""}`}
+                          className={`px-2 ${i.isNew ? 'menuIsNew' : ''}`}
                         >
                           {renderDropdownMenuNavlink(i)}
                         </li>
@@ -234,10 +234,10 @@ const NavigationItem: FC<NavigationItemWithRouterProps> = ({ menuItem }) => {
   const renderDropdownMenuNavlink = (item: NavItemType) => {
     return (
       <Link
-        target={item.targetBlank ? "_blank" : undefined}
+        target={item.targetBlank ? '_blank' : undefined}
         rel="noopener noreferrer"
         className="flex items-center font-normal text-neutral-6000 dark:text-neutral-300 py-2 px-4 rounded-md hover:text-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800 dark:hover:text-neutral-200 "
-        href={item.href || ""}
+        href={'/'}
       >
         {item.name}
         {item.type && (
@@ -256,7 +256,7 @@ const NavigationItem: FC<NavigationItemWithRouterProps> = ({ menuItem }) => {
       <Link
         rel="noopener noreferrer"
         className="inline-flex items-center text-sm xl:text-base font-normal text-neutral-700 dark:text-neutral-300 py-2 px-4 xl:px-5 rounded-full hover:text-neutral-900 hover:bg-neutral-100 dark:hover:bg-neutral-800 dark:hover:text-neutral-200"
-        href={item.href || "/"}
+        href={'/'}
       >
         {item.name}
         {item.type && (
@@ -270,9 +270,9 @@ const NavigationItem: FC<NavigationItemWithRouterProps> = ({ menuItem }) => {
   };
 
   switch (menuItem.type) {
-    case "megaMenu":
+    case 'megaMenu':
       return renderMegaMenu(menuItem);
-    case "dropdown":
+    case 'dropdown':
       return renderDropdownMenu(menuItem);
     default:
       return (

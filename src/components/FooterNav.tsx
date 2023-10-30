@@ -92,7 +92,7 @@ const FooterNav = () => {
     return item.link ? (
       <Link
         key={index}
-        href={item.link}
+        href={'/'}
         className={`flex flex-col items-center justify-between text-neutral-500 dark:text-neutral-300/90 ${
           isActive ? 'text-neutral-900 dark:text-neutral-100' : ''
         }`}

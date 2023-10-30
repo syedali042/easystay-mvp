@@ -12,7 +12,7 @@ export interface CardCategory3Props {
 const CardCategory3: FC<CardCategory3Props> = ({className = '', taxonomy}) => {
   const {photos, title, href = '/'} = taxonomy;
   return (
-    <Link href={href} className={`nc-CardCategory3 flex flex-col ${className}`}>
+    <Link href={'/'} className={`nc-CardCategory3 flex flex-col ${className}`}>
       <div
         className={`flex-shrink-0 relative w-full aspect-w-5 aspect-h-5 sm:aspect-h-6 h-0 rounded-2xl overflow-hidden group`}
       >

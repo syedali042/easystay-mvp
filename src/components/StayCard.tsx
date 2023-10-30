@@ -1,24 +1,24 @@
-import React, { FC } from "react";
-import { DEMO_STAY_LISTINGS } from "@/data/listings";
-import { StayDataType } from "@/data/types";
-import StartRating from "@/components/StartRating";
-import BtnLikeIcon from "@/components/BtnLikeIcon";
-import SaleOffBadge from "@/components/SaleOffBadge";
-import Badge from "@/shared/Badge";
-import Link from "next/link";
-import GallerySlider from "./GallerySlider";
+import React, {FC} from 'react';
+import {DEMO_STAY_LISTINGS} from '@/data/listings';
+import {StayDataType} from '@/data/types';
+import StartRating from '@/components/StartRating';
+import BtnLikeIcon from '@/components/BtnLikeIcon';
+import SaleOffBadge from '@/components/SaleOffBadge';
+import Badge from '@/shared/Badge';
+import Link from 'next/link';
+import GallerySlider from './GallerySlider';
 
 export interface StayCardProps {
   className?: string;
   data?: StayDataType;
-  size?: "default" | "small";
+  size?: 'default' | 'small';
 }
 
 const DEMO_DATA = DEMO_STAY_LISTINGS[0];
 
 const StayCard: FC<StayCardProps> = ({
-  size = "default",
-  className = "",
+  size = 'default',
+  className = '',
   data = DEMO_DATA,
 }) => {
   const {
@@ -44,8 +44,8 @@ const StayCard: FC<StayCardProps> = ({
           uniqueID={`StayCard_${id}`}
           ratioClass="aspect-w-4 aspect-h-3 "
           galleryImgs={galleryImgs}
-          href={href}
-          galleryClass={size === "default" ? undefined : ""}
+          href={'/'}
+          galleryClass={size === 'default' ? undefined : ''}
         />
         <BtnLikeIcon isLiked={like} className="absolute right-3 top-3 z-[1]" />
         {saleOff && <SaleOffBadge className="absolute left-3 top-3" />}
@@ -55,8 +55,8 @@ const StayCard: FC<StayCardProps> = ({
 
   const renderContent = () => {
     return (
-      <div className={size === "default" ? "p-4 space-y-4" : "p-3 space-y-1"}>
-        <div className={size === "default" ? "space-y-2" : "space-y-1"}>
+      <div className={size === 'default' ? 'p-4 space-y-4' : 'p-3 space-y-1'}>
+        <div className={size === 'default' ? 'space-y-2' : 'space-y-1'}>
           <span className="text-sm text-neutral-500 dark:text-neutral-400">
             {listingCategory.name} · {bedrooms} beds
           </span>
@@ -64,14 +64,14 @@ const StayCard: FC<StayCardProps> = ({
             {isAds && <Badge name="ADS" color="green" />}
             <h2
               className={`font-semibold capitalize text-neutral-900 dark:text-white ${
-                size === "default" ? "text-base" : "text-base"
+                size === 'default' ? 'text-base' : 'text-base'
               }`}
             >
               <span className="line-clamp-1">{title}</span>
             </h2>
           </div>
           <div className="flex items-center text-neutral-500 dark:text-neutral-400 text-sm space-x-1.5">
-            {size === "default" && (
+            {size === 'default' && (
               <svg
                 className="h-4 w-4"
                 fill="none"
@@ -100,7 +100,7 @@ const StayCard: FC<StayCardProps> = ({
           <span className="text-base font-semibold">
             {price}
             {` `}
-            {size === "default" && (
+            {size === 'default' && (
               <span className="text-sm text-neutral-500 dark:text-neutral-400 font-normal">
                 /night
               </span>
@@ -117,14 +117,14 @@ const StayCard: FC<StayCardProps> = ({
   return (
     <div
       className={`nc-StayCard group relative bg-white dark:bg-neutral-900 ${
-        size === "default"
-          ? "border border-neutral-100 dark:border-neutral-800 "
-          : ""
+        size === 'default'
+          ? 'border border-neutral-100 dark:border-neutral-800 '
+          : ''
       } rounded-2xl overflow-hidden hover:shadow-xl transition-shadow ${className}`}
       data-nc-id="StayCard"
     >
       {renderSliderGallery()}
-      <Link href={href}>{renderContent()}</Link>
+      <Link href={'/'}>{renderContent()}</Link>
     </div>
   );
 };

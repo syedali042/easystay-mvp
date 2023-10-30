@@ -5,7 +5,6 @@ import {
 } from '@/redux/slices/tours';
 import {useDispatch} from '@/redux/store';
 import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
 import {useSelector} from 'react-redux';
 
 const PageAddListing6 = () => {
