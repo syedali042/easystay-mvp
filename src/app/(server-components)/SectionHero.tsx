@@ -1,4 +1,5 @@
 import React, {FC} from 'react';
+import {useRouter} from 'next/navigation';
 import imagePng from '@/images/easystay-hero.svg';
 import HeroSearchForm from '../(client-components)/(HeroSearchForm)/HeroSearchForm';
 import Image from 'next/image';
@@ -9,6 +10,7 @@ export interface SectionHeroProps {
 }
 
 const SectionHero: FC<SectionHeroProps> = ({className = ''}) => {
+  const router = useRouter();
   return (
     <div
       className={`nc-SectionHero flex flex-col-reverse lg:flex-col relative ${className}`}
@@ -22,7 +24,10 @@ const SectionHero: FC<SectionHeroProps> = ({className = ''}) => {
             Experience Pakistan&apos;s Enchanting Beauty: Where Adventure Meets
             Serenity. Discover the Unexplored Gems of the East
           </span>
-          <ButtonPrimary href="/tours" sizeClass="px-5 py-4 sm:px-7">
+          <ButtonPrimary
+            onClick={() => router.push('/tours')}
+            sizeClass="px-5 py-4 sm:px-7"
+          >
             Start Exploring
           </ButtonPrimary>
         </div>
