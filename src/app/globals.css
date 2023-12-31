@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.contact-form-error{
+    font-size: 12px;
+    color: red;
+}

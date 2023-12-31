@@ -15,3 +15,9 @@ export const HomeSearchFormSchema = Yup.object().shape({
     infants: Yup.number().required('Please select infants number'),
   }),
 });
+
+export const ContactFormSchema = Yup.object().shape({
+  name: Yup.string().min(1).max(255).required(),
+  email: Yup.string().min(1).max(255).required(),
+  message: Yup.string().min(1).max(255).required(),
+});

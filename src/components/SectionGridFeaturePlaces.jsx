@@ -1,10 +1,6 @@
-import React, {FC, ReactNode} from 'react';
-import {DEMO_STAY_LISTINGS} from '@/data/listings';
-import {StayDataType} from '@/data/types';
+import React from 'react';
 import ButtonPrimary from '@/shared/ButtonPrimary';
 import HeaderFilter from './HeaderFilter';
-import StayCard from './StayCard';
-import StayCard2 from './StayCard2';
 import {getToursList} from '@/redux/slices/tours';
 import {useSelector} from 'react-redux';
 import ToursCard from './ToursCard';
@@ -22,7 +18,7 @@ const SectionGridFeaturePlaces = ({
   };
 
   return (
-    <div className="nc-SectionGridFeaturePlaces relative">
+    <div className='nc-SectionGridFeaturePlaces relative'>
       <HeaderFilter
         tabActive={'New York'}
         subHeading={subHeading}
@@ -34,7 +30,7 @@ const SectionGridFeaturePlaces = ({
       >
         {tours?.filter((_, i) => i < 4)?.map((tour) => renderCard(tour))}
       </div>
-      <div className="flex mt-16 justify-center items-center">
+      <div className='flex mt-16 justify-center items-center'>
         <ButtonPrimary onClick={() => router.push('/tours')}>
           Show me more
         </ButtonPrimary>

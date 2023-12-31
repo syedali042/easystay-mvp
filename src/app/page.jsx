@@ -1,15 +1,13 @@
 'use client';
-import React, {useEffect} from 'react';
+import React from 'react';
 import SectionHero from '@/app/(server-components)/SectionHero';
 import BgGlassmorphism from '@/components/BgGlassmorphism';
-import {TaxonomyType} from '@/data/types';
 import SectionSliderNewCategories from '@/components/SectionSliderNewCategories';
 import SectionOurFeatures from '@/components/SectionOurFeatures';
 import BackgroundSection from '@/components/BackgroundSection';
 import SectionGridFeaturePlaces from '@/components/SectionGridFeaturePlaces';
 import SectionGridAuthorBox from '@/components/SectionGridAuthorBox';
 import SectionClientSay from '@/components/SectionClientSay';
-import {getAllDocumentsFromCollection} from '@/utils/firebase/firestore';
 import {useSelector} from 'react-redux';
 import {getDestinationsList} from '@/redux/slices/destinations';
 
@@ -17,21 +15,21 @@ function PageHome() {
   const destinations = useSelector(getDestinationsList);
 
   return (
-    <main className="nc-PageHome relative overflow-hidden">
+    <main className='nc-PageHome relative overflow-hidden'>
       {/* GLASSMOPHIN */}
       <BgGlassmorphism />
-      <div className="container relative space-y-24 mb-24 lg:space-y-28 lg:mb-28">
+      <div className='container relative space-y-24 mb-24 lg:space-y-28 lg:mb-28'>
         {/* SECTION HERO */}
-        <SectionHero className="pt-10 lg:pt-16 lg:pb-16" />
+        <SectionHero className='pt-10 lg:pt-16 lg:pb-16' />
         <SectionSliderNewCategories categories={destinations} />
-        <SectionGridFeaturePlaces cardType="card2" />
-        <div className="relative py-16">
+        <SectionGridFeaturePlaces cardType='card2' />
+        <div className='relative py-16'>
           <BackgroundSection />
           <SectionClientSay />
         </div>
         <SectionOurFeatures />
-        <div className="relative py-16">
-          <BackgroundSection className="bg-orange-50 dark:bg-black dark:bg-opacity-20 " />
+        <div className='relative py-16'>
+          <BackgroundSection className='bg-orange-50 dark:bg-black dark:bg-opacity-20 ' />
           <SectionGridAuthorBox />
         </div>
       </div>

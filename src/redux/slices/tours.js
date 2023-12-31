@@ -19,11 +19,11 @@ const initialState = {
     title: '',
     description: '',
     departure: {
-      date: new Date(),
+      date: new Date().toISOString(),
       from: '',
     },
     arrival: {
-      date: new Date(),
+      date: new Date().toISOString(),
       from: '',
     },
     includings: [],
