@@ -5,7 +5,6 @@ import SectionHero from './SectionHero';
 import BgGlassmorphism from '@/components/BgGlassmorphism';
 import BackgroundSection from '@/components/BackgroundSection';
 import SectionClientSay from '@/components/SectionClientSay';
-import SectionSubscribe2 from '@/components/SectionSubscribe2';
 
 const PageAbout = ({}) => {
   return (
@@ -28,7 +27,6 @@ Discover the essence of Pakistan with us - the leading tourism company in the na
           <SectionClientSay />
         </div>
 
-        <SectionSubscribe2 />
       </div>
     </div>
   );

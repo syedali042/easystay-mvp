@@ -1,6 +1,5 @@
 'use client';
 import React from 'react';
-import SectionSubscribe2 from '@/components/SectionSubscribe2';
 import Label from '@/components/Label';
 import Input from '@/shared/Input';
 import Textarea from '@/shared/Textarea';
@@ -49,7 +48,7 @@ const PageContact = ({}) => {
   });
 
   const values = watch();
-  
+
   const onSubmit = (data) => {
     dispatch(createNewMessage(data));
     reset();
@@ -135,11 +134,6 @@ const PageContact = ({}) => {
             </div>
           </div>
         </div>
-      </div>
-
-      {/* OTHER SECTIONS */}
-      <div className='container'>
-        <SectionSubscribe2 className='pb-24 lg:pb-32' />
       </div>
     </div>
   );
