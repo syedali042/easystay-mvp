@@ -7,6 +7,7 @@ import {useState} from 'react';
 import {useSwipeable} from 'react-swipeable';
 import {variants} from '@/utils/animationVariants';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function GallerySlider({
   className = '',
@@ -17,7 +18,9 @@ export default function GallerySlider({
   galleryClass = 'rounded-xl',
   href = '/',
   navigation = true,
+  tourId
 }) {
+  const router = useRouter()
   const [loaded, setLoaded] = useState(false);
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(0);
@@ -56,13 +59,12 @@ export default function GallerySlider({
       }}
     >
       <div
-        className={`relative group group/cardGallerySlider ${className}`}
+        className={`relative cursor-pointer group group/cardGallerySlider ${className}`}
         {...handlers}
       >
         {/* Main image */}
         <div className={`w-full overflow-hidden ${galleryClass}`}>
-          <Link
-            href={'/'}
+          <span
             className={`relative flex items-center justify-center ${ratioClass}`}
           >
             <AnimatePresence initial={false} custom={direction}>
@@ -76,6 +78,7 @@ export default function GallerySlider({
                 className='absolute inset-0'
               >
                 <Image
+                  onClick={() => router.push(`/tours/${tourId}`)}
                   src={currentImage || ''}
                   fill
                   alt='listing card gallery'
@@ -85,7 +88,7 @@ export default function GallerySlider({
                 />
               </motion.div>
             </AnimatePresence>
-          </Link>
+          </span>
         </div>
 
         {/* Buttons + bottom nav bar */}
@@ -116,7 +119,12 @@ export default function GallerySlider({
 
           {/* Bottom Nav bar */}
           <div className='absolute bottom-0 inset-x-0 h-10 bg-gradient-to-t from-neutral-900 opacity-50 rounded-b-lg'></div>
-          <div className='flex items-center justify-center absolute bottom-2 left-1/2 transform -translate-x-1/2 space-x-1.5'>
+          <div
+            onClick={(e) => {
+              e.preventDefault();
+            }}
+            className='flex items-center justify-center absolute bottom-2 left-1/2 transform -translate-x-1/2 space-x-1.5'
+          >
             {images.map((_, i) => (
               <button
                 className={`w-1.5 h-1.5 rounded-full ${
