@@ -92,8 +92,8 @@ const TourFilters = ({setToursList}) => {
   };
 
   useEffect(() => {
+    const {location, datesRange} = homeFilters;
     if (location !== '') {
-      const {location, datesRange} = homeFilters;
       const {startDate, endDate} = datesRange;
       const filteredTours = filterToursList({
         location,
@@ -109,7 +109,7 @@ const TourFilters = ({setToursList}) => {
         setHomeSearchFilter({
           filters: {
             location: '',
-            datesRange: {startDate: new Date(), endDate: new Date()},
+            datesRange: {startDate: startDate, endDate:endDate},
             guests: {
               adults: 1,
               children: 0,
