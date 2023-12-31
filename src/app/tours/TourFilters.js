@@ -1,6 +1,6 @@
 'use client';
 
-import React, {Fragment, useState} from 'react';
+import React, {Fragment, useEffect, useState} from 'react';
 import {Popover, Transition} from '@headlessui/react';
 import ButtonPrimary from '@/shared/ButtonPrimary';
 import ButtonThird from '@/shared/ButtonThird';
@@ -13,10 +13,12 @@ import DatePickerCustomDay from '@/components/DatePickerCustomDay';
 import {
   filterToursList,
   getEndingDate,
+  getHomeSearchFilter,
   getStartingDate,
   getToursList,
+  setHomeSearchFilter,
 } from '@/redux/slices/tours';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 const defaultDays = [
   {
@@ -53,6 +55,12 @@ const TourFilters = ({setToursList}) => {
     days: false,
   });
 
+  // Home Page Filter
+  const homeFilters = useSelector(getHomeSearchFilter);
+
+  // dispatch
+  const dispatch = useDispatch();
+
   const tours = useSelector(getToursList);
 
   const toursStartDate = useSelector(getStartingDate);
@@ -82,6 +90,35 @@ const TourFilters = ({setToursList}) => {
     setToursList(filteredTours);
     setActiveFilter({...activeFilters, [filter]: true});
   };
+
+  useEffect(() => {
+    if (location !== '') {
+      const {location, datesRange} = homeFilters;
+      const {startDate, endDate} = datesRange;
+      const filteredTours = filterToursList({
+        location,
+        filterByStartDate: startDate,
+        filterByEndDate: endDate,
+        list: tours,
+      });
+      setToursList(filteredTours);
+      setActiveFilter({...activeFilters, dates: true});
+    }
+    return () =>
+      dispatch(
+        setHomeSearchFilter({
+          filters: {
+            location: '',
+            datesRange: {startDate: new Date(), endDate: new Date()},
+            guests: {
+              adults: 1,
+              children: 0,
+              infants: 0,
+            },
+          },
+        })
+      );
+  }, [homeFilters]);
 
   const renderXClear = (filter) => {
     return (
@@ -128,18 +165,18 @@ const TourFilters = ({setToursList}) => {
           }
           setActiveFilter({...activeFilters, [filter]: false});
         }}
-        className="w-4 h-4 rounded-full bg-primary-500 text-white flex items-center justify-center ml-3 cursor-pointer"
+        className='w-4 h-4 rounded-full bg-primary-500 text-white flex items-center justify-center ml-3 cursor-pointer'
       >
         <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-3 w-3"
-          viewBox="0 0 20 20"
-          fill="currentColor"
+          xmlns='http://www.w3.org/2000/svg'
+          className='h-3 w-3'
+          viewBox='0 0 20 20'
+          fill='currentColor'
         >
           <path
-            fillRule="evenodd"
-            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-            clipRule="evenodd"
+            fillRule='evenodd'
+            d='M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z'
+            clipRule='evenodd'
           />
         </svg>
       </span>
@@ -148,7 +185,7 @@ const TourFilters = ({setToursList}) => {
 
   const renderDatesFilter = () => {
     return (
-      <Popover className="p-1 w-full relative w-full md:w-auto">
+      <Popover className='p-1 w-full relative w-full md:w-auto'>
         {({open, close}) => (
           <>
             <Popover.Button
@@ -184,21 +221,21 @@ const TourFilters = ({setToursList}) => {
               {activeFilters?.dates == true ? (
                 renderXClear('dates')
               ) : (
-                <i className="las la-angle-down ml-2"></i>
+                <i className='las la-angle-down ml-2'></i>
               )}
             </Popover.Button>
             <Transition
               as={Fragment}
-              enter="transition ease-out duration-200"
-              enterFrom="opacity-0 translate-y-1"
-              enterTo="opacity-100 translate-y-0"
-              leave="transition ease-in duration-150"
-              leaveFrom="opacity-100 translate-y-0"
-              leaveTo="opacity-0 translate-y-1"
+              enter='transition ease-out duration-200'
+              enterFrom='opacity-0 translate-y-1'
+              enterTo='opacity-100 translate-y-0'
+              leave='transition ease-in duration-150'
+              leaveFrom='opacity-100 translate-y-0'
+              leaveTo='opacity-0 translate-y-1'
             >
-              <Popover.Panel className="absolute z-10 w-screen max-w-sm px-4 mt-3 left-0 sm:px-0 lg:max-w-3xl">
-                <div className="overflow-hidden rounded-2xl shadow-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700">
-                  <div className="relative flex flex-col px-5 py-6 space-y-5">
+              <Popover.Panel className='absolute z-10 w-screen max-w-sm px-4 mt-3 left-0 sm:px-0 lg:max-w-3xl'>
+                <div className='overflow-hidden rounded-2xl shadow-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700'>
+                  <div className='relative flex flex-col px-5 py-6 space-y-5'>
                     <DatePicker
                       selected={startDate}
                       onChange={(dates) => onChangeDate(dates)}
@@ -217,12 +254,12 @@ const TourFilters = ({setToursList}) => {
                       )}
                     />
                   </div>
-                  <div className="p-5 bg-neutral-50 dark:bg-neutral-900 dark:border-t dark:border-neutral-800 flex items-center justify-between">
+                  <div className='p-5 bg-neutral-50 dark:bg-neutral-900 dark:border-t dark:border-neutral-800 flex items-center justify-between'>
                     <ButtonThird
                       onClick={() => {
                         close();
                       }}
-                      sizeClass="px-4 py-2 sm:px-5"
+                      sizeClass='px-4 py-2 sm:px-5'
                     >
                       Clear
                     </ButtonThird>
@@ -232,7 +269,7 @@ const TourFilters = ({setToursList}) => {
                         filterTours('dates');
                         close();
                       }}
-                      sizeClass="px-4 py-2 sm:px-5"
+                      sizeClass='px-4 py-2 sm:px-5'
                     >
                       Apply
                     </ButtonPrimary>
@@ -248,7 +285,7 @@ const TourFilters = ({setToursList}) => {
 
   const renderTabsTimeOfDay = () => {
     return (
-      <Popover className="p-1 relative w-1/2 md:w-auto">
+      <Popover className='p-1 relative w-1/2 md:w-auto'>
         {({open, close}) => (
           <>
             <Popover.Button
@@ -264,23 +301,23 @@ const TourFilters = ({setToursList}) => {
               {activeFilters?.days == true ? (
                 renderXClear('days')
               ) : (
-                <i className="las la-angle-down ml-2"></i>
+                <i className='las la-angle-down ml-2'></i>
               )}
             </Popover.Button>
             <Transition
               as={Fragment}
-              enter="transition ease-out duration-200"
-              enterFrom="opacity-0 translate-y-1"
-              enterTo="opacity-100 translate-y-0"
-              leave="transition ease-in duration-150"
-              leaveFrom="opacity-100 translate-y-0"
-              leaveTo="opacity-0 translate-y-1"
+              enter='transition ease-out duration-200'
+              enterFrom='opacity-0 translate-y-1'
+              enterTo='opacity-100 translate-y-0'
+              leave='transition ease-in duration-150'
+              leaveFrom='opacity-100 translate-y-0'
+              leaveTo='opacity-0 translate-y-1'
             >
-              <Popover.Panel className="absolute z-10 w-screen max-w-sm px-4 mt-3 left-0 sm:px-0 lg:max-w-md">
-                <div className="overflow-hidden rounded-2xl shadow-xl bg-white dark:bg-neutral-900   border border-neutral-200 dark:border-neutral-700">
-                  <div className="relative flex flex-col px-5 py-6 space-y-5">
+              <Popover.Panel className='absolute z-10 w-screen max-w-sm px-4 mt-3 left-0 sm:px-0 lg:max-w-md'>
+                <div className='overflow-hidden rounded-2xl shadow-xl bg-white dark:bg-neutral-900   border border-neutral-200 dark:border-neutral-700'>
+                  <div className='relative flex flex-col px-5 py-6 space-y-5'>
                     {defaultDays.map((item) => (
-                      <div key={item.name} className="">
+                      <div key={item.name} className=''>
                         <Checkbox
                           name={item.name}
                           label={item.name}
@@ -301,8 +338,8 @@ const TourFilters = ({setToursList}) => {
                       </div>
                     ))}
                   </div>
-                  <div className="p-5 bg-neutral-50 dark:bg-neutral-900 dark:border-t dark:border-neutral-800 flex items-center justify-between">
-                    <ButtonThird onClick={close} sizeClass="px-4 py-2 sm:px-5">
+                  <div className='p-5 bg-neutral-50 dark:bg-neutral-900 dark:border-t dark:border-neutral-800 flex items-center justify-between'>
+                    <ButtonThird onClick={close} sizeClass='px-4 py-2 sm:px-5'>
                       Clear
                     </ButtonThird>
                     <ButtonPrimary
@@ -310,7 +347,7 @@ const TourFilters = ({setToursList}) => {
                         filterTours('days');
                         close();
                       }}
-                      sizeClass="px-4 py-2 sm:px-5"
+                      sizeClass='px-4 py-2 sm:px-5'
                     >
                       Apply
                     </ButtonPrimary>
@@ -326,7 +363,7 @@ const TourFilters = ({setToursList}) => {
 
   const renderTabsPriceRage = () => {
     return (
-      <Popover className="p-1 relative w-1/2 md:w-auto">
+      <Popover className='p-1 relative w-1/2 md:w-auto'>
         {({open, close}) => (
           <>
             <Popover.Button
@@ -345,23 +382,23 @@ const TourFilters = ({setToursList}) => {
               {activeFilters?.price == true ? (
                 renderXClear('price')
               ) : (
-                <i className="las la-angle-down ml-2"></i>
+                <i className='las la-angle-down ml-2'></i>
               )}
             </Popover.Button>
             <Transition
               as={Fragment}
-              enter="transition ease-out duration-200"
-              enterFrom="opacity-0 translate-y-1"
-              enterTo="opacity-100 translate-y-0"
-              leave="transition ease-in duration-150"
-              leaveFrom="opacity-100 translate-y-0"
-              leaveTo="opacity-0 translate-y-1"
+              enter='transition ease-out duration-200'
+              enterFrom='opacity-0 translate-y-1'
+              enterTo='opacity-100 translate-y-0'
+              leave='transition ease-in duration-150'
+              leaveFrom='opacity-100 translate-y-0'
+              leaveTo='opacity-0 translate-y-1'
             >
-              <Popover.Panel className="absolute z-10 w-screen max-w-sm px-4 mt-3 left-0 sm:px-0 ">
-                <div className="overflow-hidden rounded-2xl shadow-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700">
-                  <div className="relative flex flex-col px-5 py-6 space-y-8">
-                    <div className="space-y-5">
-                      <span className="font-medium">Price per day</span>
+              <Popover.Panel className='absolute z-10 w-screen max-w-sm px-4 mt-3 left-0 sm:px-0 '>
+                <div className='overflow-hidden rounded-2xl shadow-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700'>
+                  <div className='relative flex flex-col px-5 py-6 space-y-8'>
+                    <div className='space-y-5'>
+                      <span className='font-medium'>Price per day</span>
                       <Slider
                         range
                         min={0}
@@ -372,57 +409,57 @@ const TourFilters = ({setToursList}) => {
                       />
                     </div>
 
-                    <div className="flex justify-between space-x-5">
+                    <div className='flex justify-between space-x-5'>
                       <div>
                         <label
-                          htmlFor="minPrice"
-                          className="block text-sm font-medium text-neutral-700 dark:text-neutral-300"
+                          htmlFor='minPrice'
+                          className='block text-sm font-medium text-neutral-700 dark:text-neutral-300'
                         >
                           Min price
                         </label>
-                        <div className="mt-1 relative rounded-md">
-                          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <span className="text-neutral-500 sm:text-sm">
+                        <div className='mt-1 relative rounded-md'>
+                          <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
+                            <span className='text-neutral-500 sm:text-sm'>
                               Rs.
                             </span>
                           </div>
                           <input
-                            type="text"
-                            name="minPrice"
+                            type='text'
+                            name='minPrice'
                             disabled
-                            id="minPrice"
-                            className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-3 sm:text-sm border-neutral-200 rounded-full text-neutral-900"
+                            id='minPrice'
+                            className='focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-3 sm:text-sm border-neutral-200 rounded-full text-neutral-900'
                             value={rangePrices[0]}
                           />
                         </div>
                       </div>
                       <div>
                         <label
-                          htmlFor="maxPrice"
-                          className="block text-sm font-medium text-neutral-700 dark:text-neutral-300"
+                          htmlFor='maxPrice'
+                          className='block text-sm font-medium text-neutral-700 dark:text-neutral-300'
                         >
                           Max price
                         </label>
-                        <div className="mt-1 relative rounded-md">
-                          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <span className="text-neutral-500 sm:text-sm">
+                        <div className='mt-1 relative rounded-md'>
+                          <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
+                            <span className='text-neutral-500 sm:text-sm'>
                               Rs.
                             </span>
                           </div>
                           <input
-                            type="text"
+                            type='text'
                             disabled
-                            name="maxPrice"
-                            id="maxPrice"
-                            className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-3 sm:text-sm border-neutral-200 rounded-full text-neutral-900"
+                            name='maxPrice'
+                            id='maxPrice'
+                            className='focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-3 sm:text-sm border-neutral-200 rounded-full text-neutral-900'
                             value={rangePrices[1]}
                           />
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="p-5 bg-neutral-50 dark:bg-neutral-900 dark:border-t dark:border-neutral-800 flex items-center justify-between">
-                    <ButtonThird onClick={close} sizeClass="px-4 py-2 sm:px-5">
+                  <div className='p-5 bg-neutral-50 dark:bg-neutral-900 dark:border-t dark:border-neutral-800 flex items-center justify-between'>
+                    <ButtonThird onClick={close} sizeClass='px-4 py-2 sm:px-5'>
                       Clear
                     </ButtonThird>
                     <ButtonPrimary
@@ -430,7 +467,7 @@ const TourFilters = ({setToursList}) => {
                         filterTours('price');
                         close();
                       }}
-                      sizeClass="px-4 py-2 sm:px-5"
+                      sizeClass='px-4 py-2 sm:px-5'
                     >
                       Apply
                     </ButtonPrimary>
@@ -445,8 +482,8 @@ const TourFilters = ({setToursList}) => {
   };
 
   return (
-    <div className="">
-      <div className="flex flex-wrap">
+    <div className=''>
+      <div className='flex flex-wrap'>
         {renderDatesFilter()}
         {renderTabsPriceRage()}
         {renderTabsTimeOfDay()}

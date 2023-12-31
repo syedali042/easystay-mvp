@@ -39,6 +39,15 @@ const initialState = {
     host: '',
     likes: 0,
   },
+  homeSearch: {
+    location: '',
+    datesRange: {startDate: new Date(), endDate: new Date()},
+    guests: {
+      adults: 1,
+      children: 0,
+      infants: 0,
+    },
+  },
 };
 
 const slice = createSlice({
@@ -82,6 +91,9 @@ const slice = createSlice({
       let list = state.list;
       list.push(action.payload);
       state.list = list;
+    },
+    setHomeSearchFilter(state, action) {
+      state.homeSearch = action.payload;
     },
     resetNewTour(state) {
       state.new = {
@@ -138,6 +150,7 @@ export const getToursList = (state) => state.tours.list;
 
 // Filtered Tours
 export const filterToursList = ({
+  location,
   filterByStartDate,
   filterByEndDate,
   filterByPrice,
@@ -145,6 +158,12 @@ export const filterToursList = ({
   list,
 }) => {
   let tours = list;
+
+  if (location)
+    tours = tours.filter(
+      ({departure, arrival}) =>
+        arrival.from == location || departure.from == location
+    );
 
   if (filterByStartDate)
     tours = tours?.filter(
@@ -241,3 +260,24 @@ export const createNewTour = () => async (dispatch, getState) => {
     dispatch(actions.setError(error));
   }
 };
+
+export const getDistinctToursDepartureAndArrivals = (state) => {
+  let locations = [];
+  const tours = state.tours.list;
+  tours.forEach((tour) => {
+    const {
+      departure: {from: locationOne},
+      arrival: {from: locationTwo},
+    } = tour;
+    if (!locations.includes(locationOne)) locations.push(locationOne);
+    if (!locations.includes(locationTwo)) locations.push(locationTwo);
+  });
+  return locations;
+};
+
+export const setHomeSearchFilter =
+  ({filters}) =>
+  (dispatch) =>
+    dispatch(actions.setHomeSearchFilter(filters));
+
+export const getHomeSearchFilter = (state) => state.tours.homeSearch;
