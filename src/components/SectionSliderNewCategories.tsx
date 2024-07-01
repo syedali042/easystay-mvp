@@ -10,6 +10,9 @@ import PrevBtn from './PrevBtn';
 import NextBtn from './NextBtn';
 import {variants} from '@/utils/animationVariants';
 import {useWindowSize} from 'react-use';
+import {setHomeSearchFilter} from '@/redux/slices/tours';
+import {useDispatch} from 'react-redux';
+import {useRouter} from 'next/navigation';
 
 export interface SectionSliderNewCategoriesProps {
   className?: string;
@@ -111,6 +114,10 @@ const SectionSliderNewCategories: FC<SectionSliderNewCategoriesProps> = ({
   const [direction, setDirection] = useState(0);
   const [numberOfItems, setNumberOfitem] = useState(0);
 
+  const dispatch = useDispatch();
+
+  const router = useRouter();
+
   const windowWidth = useWindowSize().width;
   useEffect(() => {
     if (windowWidth < 320) {
@@ -173,7 +180,7 @@ const SectionSliderNewCategories: FC<SectionSliderNewCategoriesProps> = ({
           <div className={`flow-root overflow-hidden rounded-xl`}>
             <motion.ul
               initial={false}
-              className="relative whitespace-nowrap -mx-2 xl:-mx-4"
+              className='relative whitespace-nowrap -mx-2 xl:-mx-4'
             >
               <AnimatePresence initial={false} custom={direction}>
                 {categories.map((item, indx) => (
@@ -191,6 +198,25 @@ const SectionSliderNewCategories: FC<SectionSliderNewCategoriesProps> = ({
                     style={{
                       width: `calc(1/${numberOfItems} * 100%)`,
                     }}
+                    onClick={() => {
+                      dispatch(
+                        setHomeSearchFilter({
+                          filters: {
+                            location: item.title.toLowerCase(),
+                            datesRange: {
+                              startDate: new Date(),
+                              endDate: new Date(),
+                            },
+                            guests: {
+                              adults: 1,
+                              children: 0,
+                              infants: 0,
+                            },
+                          },
+                        })
+                      );
+                      router.push('/tours');
+                    }}
                   >
                     {renderCard(item)}
                   </motion.li>
@@ -203,7 +229,7 @@ const SectionSliderNewCategories: FC<SectionSliderNewCategoriesProps> = ({
             <PrevBtn
               style={{transform: 'translate3d(0, 0, 0)'}}
               onClick={() => changeItemId(currentIndex - 1)}
-              className="w-9 h-9 xl:w-12 xl:h-12 text-lg absolute -left-3 xl:-left-6 top-1/3 -translate-y-1/2 z-[1]"
+              className='w-9 h-9 xl:w-12 xl:h-12 text-lg absolute -left-3 xl:-left-6 top-1/3 -translate-y-1/2 z-[1]'
             />
           ) : null}
 
@@ -211,7 +237,7 @@ const SectionSliderNewCategories: FC<SectionSliderNewCategoriesProps> = ({
             <NextBtn
               style={{transform: 'translate3d(0, 0, 0)'}}
               onClick={() => changeItemId(currentIndex + 1)}
-              className="w-9 h-9 xl:w-12 xl:h-12 text-lg absolute -right-3 xl:-right-6 top-1/3 -translate-y-1/2 z-[1]"
+              className='w-9 h-9 xl:w-12 xl:h-12 text-lg absolute -right-3 xl:-right-6 top-1/3 -translate-y-1/2 z-[1]'
             />
           ) : null}
         </div>

@@ -18,14 +18,14 @@ const CardCategory3: FC<CardCategory3Props> = ({className = '', taxonomy}) => {
       >
         <Image
           src={photos ? photos[0] : ''}
-          className="object-cover w-full h-full rounded-2xl"
-          alt="places"
+          className='object-cover w-full h-full rounded-2xl'
+          alt='places'
           fill
-          sizes="(max-width: 400px) 100vw, 300px"
+          sizes='(max-width: 400px) 100vw, 300px'
         />
-        <span className="opacity-0 group-hover:opacity-100 absolute inset-0 bg-black bg-opacity-10 transition-opacity"></span>
+        <span className='opacity-0 group-hover:opacity-100 absolute inset-0 bg-black bg-opacity-10 transition-opacity'></span>
       </div>
-      <div className="mt-4 truncate">
+      <div className='mt-4 truncate'>
         <h2
           className={`text-base sm:text-lg text-neutral-900 dark:text-neutral-100 font-medium truncate`}
         >

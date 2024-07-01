@@ -45,7 +45,6 @@ const ExperiencesSearchForm: FC<ExperiencesSearchFormProps> = () => {
     router.push('/tours');
   };
 
-  console.log(errors);
   const renderForm = () => {
     return (
       <form
