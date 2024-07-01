@@ -204,8 +204,8 @@ const SectionSliderNewCategories: FC<SectionSliderNewCategoriesProps> = ({
                           filters: {
                             location: item.title.toLowerCase(),
                             datesRange: {
-                              startDate: new Date(),
-                              endDate: new Date(),
+                              startDate: new Date('1970-01-01'),
+                              endDate: new Date('2099-01-01'),
                             },
                             guests: {
                               adults: 1,
